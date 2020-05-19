@@ -11,7 +11,47 @@
 
 <body>
   <script>
-      
+      function playRound(playerSelection, computerSelection){
+
+          /*Converts any input to uppercase first letter, lowercase remaining letters*/
+          playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+          computerSelection = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1).toLowerCase();
+
+          let result;
+
+          switch (playerSelection) {
+            case computerSelection:
+                return "You've tied!";
+                break;
+            case "Rock":
+                if (computerSelection == "Scissors") {
+                    result = 1;
+                } else {
+                    result = 2;
+                }
+                break;
+            case "Scissors":
+                if (computerSelection == "Paper") {
+                    result = 1;
+                } else {
+                    result = 2;
+                }
+                break;
+            case "Paper":
+                if (computerSelection == "Rock") {
+                    result = 1;
+                } else {
+                    result = 2;
+                }
+                break;
+          }
+
+        return (
+            (result == 1) ? 
+            (`You win! ${playerSelection} beats ${computerSelection}`) :
+            (`You lose! ${computerSelection} beats ${playerSelection}`)
+        )
+      }
   </script>
 </body>
 </html>
