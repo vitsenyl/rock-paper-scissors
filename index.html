@@ -11,7 +11,19 @@
 
 <body>
   <script>
-      function playRound(playerSelection, computerSelection){
+      
+    function computerPlay() {
+        let random = Math.random();
+        if (random <= 0.33) {
+            return "Rock";
+        } else if (random >= 0.67) {
+            return "Paper";
+        } else {
+            return "Scissors";
+        }
+    }
+
+    function playRound(playerSelection, computerSelection) {
 
           /*Converts any input to uppercase first letter, lowercase remaining letters*/
           playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
@@ -51,7 +63,7 @@
             (`You win! ${playerSelection} beats ${computerSelection}`) :
             (`You lose! ${computerSelection} beats ${playerSelection}`)
         )
-      }
+    }
   </script>
 </body>
 </html>
