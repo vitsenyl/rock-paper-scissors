@@ -60,10 +60,13 @@
     }
 
     function game() {
+        
+        /* Plays 5 rounds of Rock-Paper-Scissors against a computer*/
+
         let playerScore = computerScore = 0;
         let roundCount = 0;
         let result;
-        for ( ; playerScore + computerScore < 5; roundCount++) {
+        for ( ; roundCount < 5; roundCount++) {
             let playerSelection = prompt("Rock, Paper or Scissors?");
             let computerSelection = computerPlay();
             
@@ -85,6 +88,13 @@
                     console.log(`Invalid input ${playerSelection} detected. Please enter 'Rock', 'Paper', or 'Scissors'`);
                     break;
             }
+        }
+        if (playerScore > computerScore) {
+            console.log(`You win! You: ${playerScore}, Computer: ${computerScore}`);
+        } else if (playerScore < computerScore) {
+            console.log(`You lose! Computer: ${computerScore}, You: ${playerScore}`);
+        } else {
+            console.log(`Tie game! Computer: ${computerScore}, You: ${playerScore}`);
         }
     }
 
