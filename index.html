@@ -12,7 +12,9 @@
 </head>
 
 <body>
-    <button id="playGame">Click to Play!</button>
+    <div>
+        <button id="playGame">Click to Play!</button>
+    </div>
 
     <div class="rpsOptions">
         <button id="pickRock">Rock</button>
@@ -21,8 +23,11 @@
     </div>
 
     <div class="results">
-        <span id="playerScore">0</span>
-        <span id="computerScore">0</span>
+        <h2>Scores</h2>
+        <ul>
+            <li>Player: <span id="playerScore">0</span></li>
+            <li>Computer:<span id="computerScore">0</span></li>
+        </ul>
     </div>
     
   <script src="js/rock-paper-scissors.js"></script>
