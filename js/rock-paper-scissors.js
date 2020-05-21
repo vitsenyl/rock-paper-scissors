@@ -20,10 +20,10 @@ function resetScores() {
 }
 
 function computerPlay() {
-    let random = Math.random();
-    if (random <= 0.33) {
+    let random = floor(Math.random()*3);
+    if (random == 1) {
         return "Rock";
-    } else if (random >= 0.67) {
+    } else if (random == 2) {
         return "Paper";
     } else {
         return "Scissors";
