@@ -1,14 +1,13 @@
 
 const computerScoreContainer = document.querySelector('#computerScore');
 const playerScoreContainer = document.querySelector('#playerScore');
-
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     if (button.id == "resetScores") {
         button.addEventListener('click', () => resetScores());
     } else {
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', () => {
             playRound(button.value, computerPlay());
         })
     }
@@ -20,7 +19,7 @@ function resetScores() {
 }
 
 function computerPlay() {
-    let random = floor(Math.random()*3);
+    let random = Math.floor(Math.random()*3);
     if (random == 1) {
         return "Rock";
     } else if (random == 2) {
@@ -31,10 +30,26 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    switch (evaluateRound(playerSelection, computerSelection)) {
+        case 0:
+            alert(`You've tied! You both picked ${playerSelection}`);
+            break;
+        case 1: 
+            alert(`You win! ${playerSelection} beats ${computerSelection}`);
 
-      /*Converts any input to uppercase first letter, lowercase remaining letters*/
+            playerScoreContainer.textContent = +playerScoreContainer.textContent + 1;
+            break;
+        case 2:
+            alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+            computerScoreContainer.textContent = +computerScoreContainer.textContent + 1;
+    }
+}
+
+
+function evaluateRound(playerSelection, computerSelection) {
+
+      // Converts any input to uppercase first letter, lowercase remaining letters
       playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-      computerSelection = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1).toLowerCase();
 
       let result;
 
@@ -64,9 +79,11 @@ function playRound(playerSelection, computerSelection) {
       }
 }
 
+/* Deprecated function that ran without buttons or HTML
+
 function game() {
         
-    /* Plays 5 rounds of Rock-Paper-Scissors against a computer*/
+    // Plays 5 rounds of Rock-Paper-Scissors against a computer
 
     let playerScore = computerScore = 0;
     let roundCount = 0;
@@ -102,3 +119,5 @@ function game() {
         console.log(`Tie game! Computer: ${computerScore}, You: ${playerScore}`);
     }
 }
+
+*/
