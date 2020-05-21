@@ -1,3 +1,24 @@
+
+const computerScoreContainer = document.querySelector('#computerScore');
+const playerScoreContainer = document.querySelector('#playerScore');
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    if (button.id == "resetScores") {
+        button.addEventListener('click', () => resetScores());
+    } else {
+        button.addEventListener('click', (e) => {
+            playRound(button.value, computerPlay());
+        })
+    }
+})
+
+function resetScores() {
+    computerScoreContainer.textContent = 0;
+    playerScoreContainer.textContent = 0;
+}
+
 function computerPlay() {
     let random = Math.random();
     if (random <= 0.33) {
@@ -42,7 +63,6 @@ function playRound(playerSelection, computerSelection) {
             return -1;
       }
 }
-
 
 function game() {
         
